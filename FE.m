@@ -1,4 +1,5 @@
 %%%%%%%%%% FE-ANALYSIS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% It's working ?
 function [U]=FE(nelx,nely,x,penal,connective,coord,DDL)
 [KE] = lk; 
 K = sparse(2*(nelx+1)*(nely+1), 2*(nelx+1)*(nely+1));
