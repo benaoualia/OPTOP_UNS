@@ -17,7 +17,7 @@ while change > 0.01
       [KE] = lk;
       c = 0.;
       for i= 1:C
-            S=sort(connectiv(i,:));
+            S=connectiv(i,:);
             Ue = U( [2*S(1)-1; 2*S(1); 2*S(2)-1; 2*S(2); 2*S(3)-1; 2*S(3);2*S(4)-1; 2*S(4)],1);
             c = c + x(i)^penal*Ue'*KE*Ue;
             dc(i) = -penal*x(i)^(penal-1)*Ue'*KE*Ue;
