@@ -8,7 +8,7 @@ for i = 1:C
     for j=1:m
         fac = rmin-sqrt((centers(i,1)-centers(voisin(j),1))^2+((centers(i,2)-centers(voisin(j),2))^2));
         sum = sum+fac;
-        dcn(i) = dcn(i) +fac*x(i).*dc(i);
+        dcn(i) = dcn(i) +fac*x(j).*dc(j);
     end
     dcn(i) = dcn(i)/(x(i)*sum);
 end
