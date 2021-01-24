@@ -1,4 +1,4 @@
-function top(coord,connectiv,volfrac,penal,rmin,nelx,nely,N,C,voisins,centers, fixeddofs,F)
+function top(coord,connectiv,volfrac,penal,rmin,nelx,nely,N,C,voisins,centers)
 % INITIALIZE
 
 x(1:C) = volfrac; 
@@ -11,7 +11,7 @@ while change > 0.01
       xold = x;
 
     % FE-ANALYSIS
-      [U]=FE(N,C,connectiv,x,penal, fixeddofs,F);  
+      [U]=FE(N,C,coord,connectiv,x,penal,nelx,nely);  
       
     % OBJECTIVE FUNCTION AND SENSITIVITY ANALYSIS
       [KE] = lk;
