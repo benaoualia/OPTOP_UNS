@@ -23,7 +23,5 @@ for i=1:(nelx+1)*(nely+1)
 end
 N=length(coord);      %nombre des noeuds
 C=length(connectiv); %nombre des éléments
-[voisins,centers]=calcul_voisins(coord,connectiv,rmin,N); %Calcul du voisinage prends bcq de temps
-    F(2,1) = -1;  % Force appliquée
-    fixeddofs   = union([1:2:2*(nely+1)],[2*N]);  %Liaisons
-top(coord,connectiv,volfrac,penal,rmin,nelx,nely,N,C,voisins,centers, fixeddofs,F);
+[voisins,centers]=calcul_voisins(coord,connectiv,rmin,N);
+top(coord,connectiv,volfrac,penal,rmin,nelx,nely,N,C,voisins,centers);
