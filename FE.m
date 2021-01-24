@@ -6,8 +6,8 @@ function [U]=FE(N,C,coord,connectiv,x,penal,nelx,nely)
     F = sparse(N2,1);
     U = zeros(N2,1);
     for i=1:C
-        e=sort(connectiv(i,:));
-        edof = [2*e(1)-1; 2*e(1); 2*e(3)-1; 2*e(3);2*e(4)-1; 2*e(4); 2*e(2)-1; 2*e(2)];
+        e=connectiv(i,:);
+        edof = [2*e(1)-1; 2*e(2)-1; 2*e(2); 2*e(1); 2*e(3)-1; 2*e(3);2*e(4)-1; 2*e(4)];
         K(edof,edof) = K(edof,edof) + x(i)^penal*KE;
     end
     
