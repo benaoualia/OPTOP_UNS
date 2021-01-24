@@ -1,5 +1,5 @@
 %%%%%%%%%% FE-ANALYSIS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [U]=FE(N,C,connectiv,x,penal, fixeddofs,F)
+function [U]=FE(N,C,coord,connectiv,x,penal,nelx,nely)
     [KE] = lk; 
     N2=2*N;
     K = sparse(N2, N2);
@@ -12,6 +12,8 @@ function [U]=FE(N,C,connectiv,x,penal, fixeddofs,F)
     end
     
     % DEFINE LOADS AND SUPPORTS (HALF MBB-BEAM)
+    F(2,1) = -1;
+    fixeddofs   = union([1:2:2*(nely+1)],[N2]);
     alldofs     = [1:N2];
     freedofs    = setdiff(alldofs,fixeddofs);
     
