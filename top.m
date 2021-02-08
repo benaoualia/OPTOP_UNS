@@ -1,4 +1,4 @@
-function top(connectiv,volfrac,penal,rmin,nelx,nely,N,voisins,centers,F,fixeddofs)
+function top(connectiv,volfrac,penal,rmin,nelx,nely,N,voisins,centers,F,fixeddofs,distances)
 % INITIALIZE
 N2=2*N;
 alldofs     = [1:N2];
