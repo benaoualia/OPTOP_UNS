@@ -36,4 +36,5 @@ F = sparse(N2,1);
 F(2,1) = -1;
 fixeddofs   = union([1:2:2*(nely+1)],[N2]);
 
-top(connectiv,volfrac,penal,rmin,nelx,nely,N,voisins,centers,F,fixeddofs);
+
+top(connectiv,volfrac,penal,rmin,nelx,nely,N,voisins,centers,F,fixeddofs,distances);
