@@ -1,5 +1,9 @@
-function top(coord,connectiv,volfrac,penal,rmin,nelx,nely,N,C,voisins,centers)
+function top(connectiv,volfrac,penal,rmin,nelx,nely,N,voisins,centers,F,fixeddofs)
 % INITIALIZE
+N2=2*N;
+alldofs     = [1:N2];
+freedofs    = setdiff(alldofs,fixeddofs);
+C=length(connectiv); %nombre des éléments
 
 x(1:C) = volfrac; 
 loop = 0; 
@@ -11,14 +15,14 @@ while change > 0.01
       xold = x;
 
     % FE-ANALYSIS
-      [U]=FE(N,C,coord,connectiv,x,penal,nelx,nely);  
+      [U]=FE(N2,C,connectiv,x,penal,F,fixeddofs,freedofs);  
       
     % OBJECTIVE FUNCTION AND SENSITIVITY ANALYSIS
       [KE] = lk;
       c = 0.;
       for i= 1:C
             S=connectiv(i,:);
-            Ue = U( [2*S(1)-1; 2*S(1); 2*S(2)-1; 2*S(2); 2*S(3)-1; 2*S(3);2*S(4)-1; 2*S(4)],1);
+            Ue = U( [2*S(1)-1; 2*S(1);2*S(2)-1; 2*S(2); 2*S(3)-1; 2*S(3);2*S(4)-1; 2*S(4) ],1);
             c = c + x(i)^penal*Ue'*KE*Ue;
             dc(i) = -penal*x(i)^(penal-1)*Ue'*KE*Ue;
       end
