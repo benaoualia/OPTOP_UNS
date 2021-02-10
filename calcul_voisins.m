@@ -1,4 +1,4 @@
-function [voisins,centers,distances]=calcul_voisins(coord,connectiv,rmin)
+function [voisins,distances]=calcul_voisins(coord,connectiv,rmin)
     C=length(connectiv);    
     voisins=cell(C,1);
     distances=cell(C,1);
