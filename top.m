@@ -1,4 +1,4 @@
-function top(connectiv,volfrac,penal,rmin,nelx,nely,N,voisins,centers,F,fixeddofs,distances)
+function top(connectiv,volfrac,penal,rmin,nelx,nely,N,voisins,F,fixeddofs,distances)
 % INITIALIZE
 N2=2*N;
 alldofs     = [1:N2];
@@ -22,16 +22,16 @@ while change > 0.01
       c = 0.;
       for i= 1:C
             S=connectiv(i,:);
-            Ue = U( [2*S(1)-1; 2*S(1);2*S(2)-1; 2*S(2); 2*S(3)-1; 2*S(3);2*S(4)-1; 2*S(4) ],1);
+            Ue = U( [2*S(1)-1; 2*S(1);2*S(4)-1; 2*S(4);2*S(3)-1; 2*S(3);2*S(2)-1; 2*S(2)],1);
             c = c + x(i)^penal*Ue'*KE*Ue;
             dc(i) = -penal*x(i)^(penal-1)*Ue'*KE*Ue;
       end
       
     % FILTERING OF SENSITIVITIES
-      [dc]   = check(C,rmin,x,dc,voisins,centers,distances);    
+      [dc]   = check(C,rmin,x,dc,voisins,distances);    
       
     % DESIGN UPDATE BY THE OPTIMALITY CRITERIA METHOD
-      [x]    = OC(N,x,volfrac,dc); 
+      [x]    = OC(x,volfrac,dc,C); 
       
 %     % PRINT RESULTS
       change = max(max(abs(x-xold)));
