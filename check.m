@@ -10,7 +10,7 @@ for i = 1:C
         fac = rmin-distance(j);
         sum = sum+fac;
         dcn(i) = dcn(i) +fac*x(voisin(j)).*dc(voisin(j));
-      end
     end
     dcn(i) = dcn(i)/(x(i)*sum);
+end
 end
