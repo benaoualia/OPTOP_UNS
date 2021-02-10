@@ -1,6 +1,6 @@
 %%%%%%%%%% MESH-INDEPENDENCY FILTER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [dcn]=check(C,rmin,x,dc,voisins,distances)
-dcn=zeros(C,1);
+dcn=zeros(1,C);
 for i = 1:C
     sum=0.0; 
     voisin=voisins{i};
