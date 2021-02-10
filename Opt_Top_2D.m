@@ -15,9 +15,9 @@ l=1;
 for i=1:(nelx+1)*(nely+1)
     if(not(mod(i,nely+1)==0))
         connectiv(l,1)=i;
-        connectiv(l,2)=i+1;            % 4 connective of elements
+        connectiv(l,2)=i+nely+1;            % 4 connective of elements
         connectiv(l,3)=i+nely+2;
-        connectiv(l,4)=i+nely+1;
+        connectiv(l,4)=i+1;
         l=l+1;
     end
     if (l>nelx*nely) 
