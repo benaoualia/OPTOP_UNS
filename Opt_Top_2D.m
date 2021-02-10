@@ -1,6 +1,6 @@
 clear all ; clc
 
-rmin=1.2;nelx=60;nely=60;volfrac=0.5;penal=3;
+rmin=1.2;nelx=10;nely=10;volfrac=0.5;penal=3;
 
 l=1;
 for i=0:nelx
@@ -29,7 +29,7 @@ N=length(coord);      %nombre des noeuds
 N2=2*N;
 
 
-[voisins,centers,distances]=calcul_voisins(coord,connectiv,rmin);
+[voisins,distances]=calcul_voisins(coord,connectiv,rmin);
 
 % DEFINE LOADS AND SUPPORTS (HALF MBB-BEAM)
 F = sparse(N2,1);
@@ -37,4 +37,4 @@ F(2,1) = -1;
 fixeddofs   = union([1:2:2*(nely+1)],[N2]);
 
 
-top(connectiv,volfrac,penal,rmin,nelx,nely,N,voisins,centers,F,fixeddofs,distances);
+top(connectiv,volfrac,penal,rmin,nelx,nely,N,voisins,F,fixeddofs,distances);
