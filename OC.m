@@ -1,4 +1,3 @@
-%%%%%%%%%% OPTIMALITY CRITERIA UPDATE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [xnew]=OC(x,volfrac,dc,C)  
 l1 = 0; l2 = 100000; move = 0.2;
 while (l2-l1 > 1e-4)
