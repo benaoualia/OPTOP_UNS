@@ -53,3 +53,4 @@ change = 1;
       [x]    = OC(x,volfrac,dc,C);    
       change = max(max(abs(x-xold)));
  end
+ Display3D(x,coord,connectiv,C)
