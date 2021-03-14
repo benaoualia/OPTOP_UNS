@@ -25,11 +25,12 @@ for i=1:(nelx+1)*(nely+1)
     end
 end
 
+
 N=length(coord);      %nombre des noeuds
 N2=2*N;
 
 
-[voisins,distances]=calcul_voisins(coord,connectiv,rmin);
+[voisins,centers,distances]=calcul_voisins(coord,connectiv,rmin);
 
 % DEFINE LOADS AND SUPPORTS (HALF MBB-BEAM)
 F = sparse(N2,1);
@@ -37,4 +38,4 @@ F(2,1) = -1;
 fixeddofs   = union([1:2:2*(nely+1)],[N2]);
 
 
-top(connectiv,volfrac,penal,rmin,nelx,nely,N,voisins,F,fixeddofs,distances);
+top(coord,connectiv,volfrac,penal,rmin,N,voisins,F,fixeddofs,distances);

@@ -1,9 +1,10 @@
-function top(connectiv,volfrac,penal,rmin,nelx,nely,N,voisins,F,fixeddofs,distances)
+function top(coord,connectiv,volfrac,penal,rmin,N,voisins,F,fixeddofs,distances)
 % INITIALIZE
 N2=2*N;
 alldofs     = [1:N2];
 freedofs    = setdiff(alldofs,fixeddofs);
-C=length(connectiv); %nombre des Ã©lÃ©ments
+
+C=length(connectiv); %nombre des éléments
 
 x(1:C) = volfrac; 
 loop = 0; 
@@ -24,8 +25,8 @@ while change > 0.01
             S=connectiv(i,:);
             Ue = U( [2*S(1)-1; 2*S(1);2*S(2)-1; 2*S(2);2*S(3)-1; 2*S(3);2*S(4)-1; 2*S(4)],1);
             c = c + x(i)^penal*Ue'*KE*Ue;
-            dc(i) = -penal*x(i)^(penal-1)*Ue'*KE*Ue;
-      end
+            dc(i) =-penal*x(i)^(penal-1)*Ue'*KE*Ue;
+      end 
       
     % FILTERING OF SENSITIVITIES
       [dc]   = check(C,rmin,x,dc,voisins,distances);    
@@ -40,6 +41,7 @@ while change > 0.01
             ' ch.: ' sprintf('%6.3f',change )])
         
     % PLOT DENSITIES  
-    xx=reshape(x,[nelx,nely]);
-      colormap(gray); imagesc(-xx); axis equal; axis tight; axis off;pause(1e-6);
+    Display2D(x,coord,connectiv,C)
+%    xx=reshape(x,[nelx,nely]);
+%      colormap(gray); imagesc(-xx); axis equal; axis tight; axis off;pause(1e-6);
 end 
