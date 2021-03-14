@@ -1,6 +1,6 @@
 clear all ; clc; 
 rmin = 1.5; %voisinnage
-penal=3;%pénalisation
+penal=3;%pÃ©nalisation
 volfrac=0.4;
 E0 = 1;           % Young's modulus of solid material
 Emin = 1e-9;      % Young's modulus of void-like material
@@ -9,7 +9,7 @@ nu = 0.3;         % Poisson's ratio
 load('coord.mat')
 load('connectiv.mat')
 
-C=size(connectiv,1);  %nombre d'éléments
+C=size(connectiv,1);  %nombre d'Ã©lÃ©ments
 N=length(coord); %Nombre de noeuds
 N3=N*3; %Nombre de ddl
 alldofs     = [1:N3];
